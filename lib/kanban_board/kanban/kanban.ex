@@ -1,13 +1,13 @@
 defmodule KanbanBoard.Kanban.Kanban do
   import Ecto.Query
-  aleas(KanbanBoard.Repo)
-  alias KanbanBoard.Kanban.{Board, Column, card}
+  alias(KanbanBoard.Repo)
+  alias KanbanBoard.Kanban.{Board, Column, Card}
 
   # CRUD for boards
   def create_board(attrs \\ %{}) do
     %Board{}
     |> Board.changeset(attrs)
-    |> Repo.isert()
+    |> Repo.insert()
   end
 
   def get_board!(id), do: Repo.get!(Board, id)
@@ -56,7 +56,7 @@ defmodule KanbanBoard.Kanban.Kanban do
     |> Repo.insert()
   end
 
-  def get_card!(id), do: Repo.get!(card, id)
+  def get_card!(id), do: Repo.get!(Card, id)
 
   def update_card(%Card{} = card, attrs) do
     card
